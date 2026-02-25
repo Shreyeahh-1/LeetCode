@@ -1,17 +1,4 @@
 class Solution:
     def sortByBits(self, arr: List[int]) -> List[int]:
-        def find_weight(num):
-            weight = 0
-
-            mask = 1
-            while num:
-                if num & mask:
-                    weight += 1
-                    num ^= mask
-                
-                mask <<= 1
-
-            return weight
-        arr.sort(key = lambda num: (find_weight(num), num))
+        arr.sort(key = lambda num: (num.bit_count(), num))
         return arr
-        
